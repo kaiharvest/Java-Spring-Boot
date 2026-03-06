@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Primary;
 public class PrimaryConfiguration {
 
     @Bean
-    @Primary
+    // @Primary
     public Foo foo1() {
         return new Foo();
     }
