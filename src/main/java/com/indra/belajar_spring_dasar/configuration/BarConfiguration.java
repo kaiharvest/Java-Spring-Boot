@@ -1,8 +1,11 @@
-package com.indra.belajar_spring_dasar;
+package com.indra.belajar_spring_dasar.configuration;
 
 import com.indra.belajar_spring_dasar.data.Bar;
 import org.springframework.context.annotation.Bean;
 
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
 public class BarConfiguration {
     @Bean
     public Bar bar() {
