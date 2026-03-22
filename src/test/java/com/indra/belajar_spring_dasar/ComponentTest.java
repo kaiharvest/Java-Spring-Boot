@@ -46,11 +46,13 @@ public class ComponentTest {
     }
 
     @Test
-    void doubleDependenciesInjection() {
+    void fieldDependenciesInjection() {
         CustomersService customersService = applicationContext.getBean(CustomersService.class);
-        CustomersRepository customersRepository = applicationContext.getBean(CustomersRepository.class);
 
-        Assertions.assertSame(customersRepository, customersService);
-        Assertions.assertSame(customersRepository, customersService.getPremiumCustomersRepository());
+        CustomersRepository normalCustomersRepository = applicationContext.getBean("normalCustomersRepository", CustomersRepository.class);
+        CustomersRepository premiumCustomersRepository = applicationContext.getBean("premiumCustomersRepository", CustomersRepository.class);
+
+        Assertions.assertSame(normalCustomersRepository, customersService.getNormalCustomersRepository());
+        Assertions.assertSame(premiumCustomersRepository, customersService.getPremiumCustomersRepository());
     }
 }
