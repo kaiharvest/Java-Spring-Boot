@@ -6,10 +6,12 @@ import com.indra.belajar_spring_dasar.data.FooBar;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 @Configuration
 public class DependenceInjectionConfiguration {
 
+    @Primary
     @Bean
     public Foo fooFirst() {
         return new Foo();
@@ -25,7 +27,7 @@ public class DependenceInjectionConfiguration {
     }
 
     @Bean
-    public FooBar fooBar(@Qualifier("foooSecond") Foo foo, Bar bar) {
+    public FooBar fooBar(@Qualifier("fooFirst") Foo foo, Bar bar) {
         return new FooBar(foo, bar);
     }
 }
